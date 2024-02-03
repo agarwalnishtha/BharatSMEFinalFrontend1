@@ -1,38 +1,144 @@
+/* src/App.css */
 .App {
   text-align: center;
+  padding: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  margin-right: auto;
+  width: 80px;
+  height: 80px;
+  max-width: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ml-auto {
+  margin-left: auto !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.sidebar {
+  background-color: #f8f9fa;
+  height: 100vh;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+
+.main-content {
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.height{
+  height: 100%;
+}
+
+.captioncolor{
+  color: black !important;
+}
+
+.carousel{
+  /* background-color: cadetblue; */
+  /* height: 500px; */
+  /* padding: 10px; */
+}
+
+table, th, td {
+  border:1px solid black;
+}
+
+.sectionHeading{
+  text-align: center;
+  text-decoration: underline cadetblue;
+  color: cadetblue;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+/* .sections{
+  padding: 20px;
+} */
+
+.buttons{
+  background: cadetblue !important;
+}
+
+.yarn{
+  position: relative;
+  background-image: url('output-onlinepngtools.png'); /* Replace 'your-image.jpg' with the path to your image */
+  background-size: cover;
+  background-position: center;
+  color: black; /* Adjust text color to be visible against the background */
+  padding: 20px; /* Adjust padding as needed */
+  font-weight: bold;
+  font-size: large;
+}
+
+.yarn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity by changing the '0.5' value */
+}
+
+.rmc{
+  position: relative;
+  background-image: url('rmc_background.png'); /* Replace 'your-image.jpg' with the path to your image */
+  background-size: cover;
+  background-position: center;
+  color: black; /* Adjust text color to be visible against the background */
+  padding: 20px; /* Adjust padding as needed */
+  font-weight: bold;
+  font-size: large;
+}
+
+.rmc::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.1); /* Adjust the opacity by changing the '0.5' value */
+}
+
+.navs{
+  padding-top: 14px !important;
+}
+
+#basic-nav-dropdown{
+  padding-top: 14px !important;
+}
+
+.about{
+  font-size: large;
+  font-weight: bold;
+}
+
+.navbutton{
+  background-color: white !important;
+  color: black !important;
+  font-weight: bold !important;
+  border: none !important;
+}
+
+#contact{
+  background-color: cadetblue;
+  color: black !important;
+  padding: 10px;
+}
+
+.formheading{
+  color: cadetblue;
+}
+
+.phone-link {
+  color: white; /* Initial color */
+  transition: color 0.3s; /* Add a smooth transition effect */
+}
+
+.phone-link:hover {
+  color:darkgray; /* Color on hover */
 }
