@@ -76,7 +76,7 @@ function App() {
       <div style={{ padding: '15px', fontWeight: 'bold' }}>
         <Navbar expand="lg" style={{ backgroundColor: 'cadetblue' }}>
           <Container>
-            <Navbar.Brand className="logo" href="#home"><img src="img-562.png" alt="Logo" className="logo" style={{ paddingBottom: '8px' }} /></Navbar.Brand>
+            <Navbar.Brand className="logo" href="#home"><img src="https://cdn.statically.io/gh/agarwalnishtha/BharatSMEFinalFrontend1/main/src/img-562.png" alt="Logo" className="logo" style={{ paddingBottom: '8px' }} /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ml-auto">
