@@ -104,6 +104,28 @@ table, th, td {
   background-color: rgba(0, 0, 0, 0.1); /* Adjust the opacity by changing the '0.5' value */
 }
 
+.loans{
+  position: relative;
+  background-image: url('loans_background.png'); /* Replace 'your-image.jpg' with the path to your image */
+  background-size: cover;
+  background-position: center;
+  color: black; /* Adjust text color to be visible against the background */
+  padding: 20px; /* Adjust padding as needed */
+  font-weight: bold;
+  font-size: large;
+}
+
+.loans::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity by changing the '0.5' value */
+}
+
+
 .navs{
   padding-top: 14px !important;
 }

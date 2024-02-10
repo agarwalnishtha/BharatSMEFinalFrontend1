@@ -85,6 +85,7 @@ function App() {
                 <NavDropdown title="Products" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">RMC</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Yarn</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">SME Business Loans</NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="#prices" className='navs'>Prices</Nav.Link>
                 <Nav.Link href="#contact" className='navs'>Contact Us</Nav.Link>
@@ -183,6 +184,20 @@ function App() {
           </div>
         </div>
       </section>
+      <section id="action/3.3" className="text-center py-3 sections">
+        <div className="container loans">
+          <h2 className='sectionHeading'>SME Business Loans</h2>
+          <div className="mx-auto" style={{ maxWidth: '800px' }}>
+            <p>
+            Unlock the potential of your business with our SME Business Loans where we have joined forces with India's leading financial institutions to provide unbeatable loan options tailored for small and medium scale companies. Whether you're dreaming big or seeking rapid growth, our confidence lies in empowering small and medium-scale enterprises like yours with impactful funding solutions.
+
+Say goodbye to endless paperwork and hello to fast, hassle-free funding.
+
+Trust in our expertise, leverage our network, and catapult your business towards greater heights today!
+</p>
+          </div>
+        </div>
+      </section>
       <section id="prices" className="text-center py-3 sections">
         <h2 className='sectionHeading'>Prices</h2>
         <div className="mx-auto" style={{ maxWidth: '1000px' }}>
@@ -206,8 +221,50 @@ function App() {
               </tr>
               <tr>
                 <th scope="row">2</th>
+                <td>RMC Grade B</td>
+                <td>4500/cm<sup>3</sup></td>
+                <td>Surat</td>
+                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>RMC Grade C</td>
+                <td>4000/cm<sup>3</sup></td>
+                <td>Surat</td>
+                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
                 <td>Yarn Grade A</td>
                 <td>80,000/ton</td>
+                <td>Surat</td>
+                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Yarn Grade B</td>
+                <td>75,000/ton</td>
+                <td>Surat</td>
+                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
+              </tr>              
+              <tr>
+                <th scope="row">6</th>
+                <td>Yarn Grade C</td>
+                <td>70,000/ton</td>
+                <td>Surat</td>
+                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>Working Capital Loan for SME</td>
+                <td>8% - 18% p.a.</td>
+                <td>Surat</td>
+                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>Term Loan for SME</td>
+                <td>8% - 18% p.a.</td>
                 <td>Surat</td>
                 <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
               </tr>
@@ -254,6 +311,7 @@ function App() {
                 <option value="Want to become a Supplier">Want to become a Supplier</option>
                 <option value="Want to become a Buyer">Want to become a Buyer</option>
                 <option value="Want to become a Lending Partner">Want to become a Lending Partner</option>
+                <option value="Want to take a SME Business Loan">Want to take a SME Business Loan</option>
                 <option value="Others">Others</option>
               </Form.Control>
             </Form.Group>
