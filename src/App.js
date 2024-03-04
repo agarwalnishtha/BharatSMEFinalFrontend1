@@ -8,55 +8,54 @@ import { Carousel } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-
-
+import CityDropdown from './cityDropdown';
+import SubsidyForm from './subsidyModal';
+import LoanForm from './loanModal';
+import PartnershipForm from './partnershipModal';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
 
 function App() {
-  const [showLoginForm, setShowLoginForm] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-
-
-  const handleLoginFormShow = () => setShowLoginForm(true);
-  const handleLoginFormClose = () => {
+  //subsidy form
+  const [showSubsidyForm, setShowSubsidyForm] = useState(false);
+  const handleSubsidyFormShow = () => setShowSubsidyForm(true);
+  const handleSubsidyFormClose = () => {
     console.log('Closing modal...');
-    setShowLoginForm(false);
-    setShowSuccessModal(false); // Close the success modal as well
+    setShowSubsidyForm(false);
+    handleCloseSuccessModal(); // Close the success modal as well
   };
-
-  const [formData, setFormData] = useState({
+  const [subsidyFormData, setSubsidyFormData] = useState({
     name: '',
     organization: '',
     email: '',
     number: '',
-    requirements: '',
-    purpose: '',
+    businessType: '',
+    city: '',
   });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleSubsidyChange = (e) => {
+    setSubsidyFormData({ ...subsidyFormData, [e.target.name]: e.target.value });
   };
-
-  const handleSubmit = async (e) => {
+  const handleSubsidySubmit = async (e) => {
     console.log('Handling submit...');
     e.preventDefault();
     try {
-      const response = await axios.post('https://bharat-sme-5365a880f24b.herokuapp.com/register', formData);
+      const response = await axios.post('https://bharat-sme-5365a880f24b.herokuapp.com/register', subsidyFormData);
       console.log(response.data);
       // Check if the registration was successful before closing the modal
       if (response.data.success) {
         // Reset the form data
-        setFormData({
+        setSubsidyFormData({
           name: '',
           organization: '',
           email: '',
           number: '',
-          requirements: '',
-          purpose: '',
+          businessType: '',
+          city: '',
         });
         // Close the modal
-        handleLoginFormClose();
+        handleSubsidyFormClose();
         // Show the success modal
-      setShowSuccessModal(true);
+        handleShowSuccessModal();
       } else {
         console.error('Error registering user:', response.data.error);
         // Handle the error scenario if needed
@@ -65,31 +64,168 @@ function App() {
       console.error('Error registering user:', error);
     }
   };
-
-  const handleContactButtonClick = () => {
-    // You can perform any additional logic before showing the login form here
-    handleLoginFormShow();
+  const handleSubsidyButtonClick = () => {
+    handleSubsidyFormShow();
   };
+
+  //loan form
+  const [showLoanForm, setShowLoanForm] = useState(false);
+  const handleLoanFormShow = () => setShowLoanForm(true);
+  const handleLoanFormClose = () => {
+    console.log('Closing modal...');
+    setShowLoanForm(false);
+    handleCloseSuccessModal(); // Close the success modal as well
+  };
+  const [loanFormData, setLoanFormData] = useState({
+    name: '',
+    organization: '',
+    gstNumber: '',
+    email: '',
+    number: '',
+    city: '',
+    loanAmount: '',
+  });
+  const handleLoanChange = (e) => {
+    const { name, value } = e.target;
+
+    // Check if the input field is 'loanAmount'
+    if (name === 'loanAmount') {
+        // Remove any non-digit characters from the input value, except for the Indian Rupee symbol
+        const cleanedValue = value.replace(/[^\d₹]/g, '');
+
+        // Remove leading zeros
+        const cleanedValueNoZeros = cleanedValue.replace(/^0+/, '');
+
+        // Format loan amount with commas
+        const formattedLoanAmount = cleanedValueNoZeros.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+        // Update loanFormData with the formatted value
+        setLoanFormData({ ...loanFormData, [name]: formattedLoanAmount });
+    } else {
+        // For other fields, update loanFormData as usual
+        setLoanFormData({ ...loanFormData, [name]: value });
+    }
+};
+
+  const handleLoanSubmit = async (e) => {
+    console.log('Handling submit...');
+    e.preventDefault();
+    try {
+      const response = await axios.post('https://bharat-sme-5365a880f24b.herokuapp.com/loan', loanFormData);
+      console.log(response.data);
+      // Check if the registration was successful before closing the modal
+      if (response.data.success) {
+        // Reset the form data
+        setLoanFormData({
+          name: '',
+          organization: '',
+          gstNumber: '',
+          email: '',
+          number: '',
+          city: '',
+          loanAmount: '',
+        });
+        // Close the modal
+        handleLoanFormClose();
+        // Show the success modal
+        handleShowSuccessModal();
+      } else {
+        console.error('Error registering user:', response.data.error);
+        // Handle the error scenario if needed
+      }
+    } catch (error) {
+      console.error('Error registering user:', error);
+    }
+  };
+  const handleLoanButtonClick = () => {
+    // You can perform any additional logic before showing the login form here
+    handleLoanFormShow();
+  };
+
+  //partnership form
+  const [showPartnershipForm, setShowPartnershipForm] = useState(false);
+  const handlePartnershipFormShow = () => setShowPartnershipForm(true);
+  const handlePartnershipFormClose = () => {
+    console.log('Closing modal...');
+    setShowPartnershipForm(false);
+    handleCloseSuccessModal(); // Close the success modal as well
+  };
+  const [partnershipFormData, setPartnershipFormData] = useState({
+    name: '',
+    organization: '',
+    email: '',
+    number: '',
+    description: '',
+  });
+  const handlePartnershipChange = (e) => {
+    setPartnershipFormData({ ...partnershipFormData, [e.target.name]: e.target.value });
+  };
+  const handlePartnershipSubmit = async (e) => {
+    console.log('Handling submit...');
+    e.preventDefault();
+    try {
+      const response = await axios.post('https://bharat-sme-5365a880f24b.herokuapp.com/partnership', partnershipFormData);
+      console.log(response.data);
+      // Check if the registration was successful before closing the modal
+      if (response.data.success) {
+        // Reset the form data
+        setPartnershipFormData({
+          name: '',
+          organization: '',
+          email: '',
+          number: '',
+          description: '',
+        });
+        // Close the modal
+        handlePartnershipFormClose();
+        // Show the success modal
+        handleShowSuccessModal();
+      } else {
+        console.error('Error registering user:', response.data.error);
+        // Handle the error scenario if needed
+      }
+    } catch (error) {
+      console.error('Error registering user:', error);
+    }
+  };
+  const handlePartnershipButtonClick = () => {
+    // You can perform any additional logic before showing the login form here
+    handlePartnershipFormShow();
+  };
+
+  //success forms
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const handleShowSuccessModal = () => {
+    setShowSuccessModal(true);
+  }
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+  }
 
   return (
     <div className="App height">
-      <div style={{ padding: '15px', fontWeight: 'bold' }}>
-        <Navbar expand="lg" style={{ backgroundColor: 'cadetblue' }}>
+      <div style={{ padding: '15px', fontWeight: 'bold', paddingTop: '0px' }}>
+        <Navbar expand="lg" style={{ backgroundColor: 'white' }} className='nav'>
           <Container>
-            <Navbar.Brand className="logo" href="#home"><img src="https://cdn.statically.io/gh/agarwalnishtha/BharatSMEFinalFrontend1/main/src/img-562.png" alt="Logo" className="logo" style={{ paddingBottom: '8px' }} /></Navbar.Brand>
+            <Navbar.Brand className="logo" href="#home"><img src="logo_new.png" alt="Logo" className="logo" style={{ paddingBottom: '8px' }} /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="ml-auto">
-                {/* <Nav.Link href="#home">Home</Nav.Link> */}
+              <Nav className="ml-auto navigation">
                 <Nav.Link href="#about" className='navs'>About Us</Nav.Link>
-                <NavDropdown title="Products" id="basic-nav-dropdown">
+                {/* <NavDropdown title="Products" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">RMC</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Yarn</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">SME Business Loans</NavDropdown.Item>
-                </NavDropdown>
-                <Nav.Link href="#prices" className='navs'>Prices</Nav.Link>
+                </NavDropdown> */}
+                <Nav.Link href="#subsidy" className='navs' style={{ width: '150px' }}>PMFME (Food Industry Subsidy)</Nav.Link>
+                <Nav.Link href="#loans" className='navs' style={{ width: '145px' }}>Unseured Business Loans</Nav.Link>
                 <Nav.Link href="#contact" className='navs'>Contact Us</Nav.Link>
-                <Nav.Link href="#getintouch"><Button className="navbutton" type="link" onClick={handleContactButtonClick}>Get in Touch</Button></Nav.Link>
+                {/* <Nav.Link href="#getintouch"><Button className="navbutton" type="link" onClick={handleContactButtonClick}>Get in Touch</Button></Nav.Link> */}
+                <Button className="navbutton"><NavDropdown title="Get in Touch">
+                  <NavDropdown.Item type="link" onClick={handleSubsidyButtonClick}>For Subsidy</NavDropdown.Item>
+                  <NavDropdown.Item type="link" onClick={handleLoanButtonClick}>For Loans</NavDropdown.Item>
+                  <NavDropdown.Item type="link" onClick={handlePartnershipButtonClick}>For Partnership Enquiry</NavDropdown.Item>
+                </NavDropdown></Button>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -100,9 +236,9 @@ function App() {
           <Carousel.Item className='carousel'>
             <img
               className=" image"
-              src="image.png"
+              src="modi_carousel.jpeg"
               alt="First slide"
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              style={{ width: '100%', height: '500px', objectFit: 'contain' }}
             />
             {/* <Carousel.Caption className='captioncolor'>
               <h3>First slide label</h3>
@@ -114,7 +250,7 @@ function App() {
               className="image"
               src="6bb36029-0fdc-4655-b712-9e05f1089f1e.jpg"
               alt="Second slide"
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              style={{ width: '100%', height: '500px', objectFit: 'contain' }}
             />
             {/* <Carousel.Caption className='captioncolor'>
               <h3>Second slide label</h3>
@@ -126,7 +262,7 @@ function App() {
               className="image"
               src="Yarn_Carausal.jpg"
               alt="Third slide"
-              style={{ width: '100%', height: '100%', objectFit: 'fill' }}
+              style={{ width: '100%', height: '500px', objectFit: 'contain' }}
             />
             {/* <Carousel.Caption className='captioncolor'>
               <h3>Second slide label</h3>
@@ -138,217 +274,131 @@ function App() {
       </Container>
 
       <section id="about" className="text-center py-3 sections" >
-        <div className="container">
+        <div className="container aboutUs">
           <h2 className="sectionHeading">What We Do?</h2>
-          <div className="mx-auto" style={{ maxWidth: '800px' }}>
-            <p className='about'>
-              At BharatSME, we understand the struggles that Indian SMEs (Small and Medium Enterprise) face when it comes to their raw material procurement. They don’t have direct access to quality suppliers and have to procure from small traders/dealers who offer very short credit periods that too at very high interest rates. That's why we created BharatSME - an online raw material procurement platform specifically designed for SMEs in India. Our goal is to simplify the procurement process and help our clients save time, money, and effort by providing a one-stop solution for all their raw material needs.
-            </p>
-
-            <p className='about'>
-              Our team of experts has carefully selected and partnered with top suppliers in the industry to bring you the best quality products at competitive prices directly from these suppliers. But we don't just stop there, through our partnership with some of the leading financial institutions of our country, we offer a wide range of financial products that cater to your credit and loan requirements. With our user-friendly platform, efficient delivery system, and dedicated customer support team, we strive to make the procurement process seamless and hassle-free for our clients.
-            </p>
-
-            <p className='about'>
-              We believe that every business, no matter its size, deserves access to the best resources. That's why BharatSME is dedicated to helping small and medium scale construction companies thrive in today's market.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section id="action/3.1" className="text-center py-3 sections">
-        <div className="container rmc">
-          <h2 className='sectionHeading'>RMC</h2>
-          <div className="mx-auto" style={{ maxWidth: '800px' }}>
+          <div className="mx-auto" style={{ maxWidth: '1000px' , textAlign: 'justify'}}>
             <p>
-              Ready Mix Concrete (RMC) is a tailor-made concrete mixture manufactured in a centralized batching plant, where raw materials such as cement, aggregates, water, and admixtures are precisely measured and mixed. The resulting concrete is then transported to construction sites in specialized transit mixers, ready for immediate use. This innovative approach eliminates the need for on-site mixing and ensures a consistent, high-quality concrete mix.
-
-              Centralized batching plants utilize advanced technology to ensure that the concrete mix is consistent and adheres to strict quality standards. The precision in mixing leads to a uniform composition, resulting in structures with enhanced strength, durability, and overall quality.
-
-              It can be customized to meet specific project requirements, allowing for a versatile range of applications. Contractors can easily adjust the mix design to achieve desired characteristics such as strength, workability, and durability, catering to the unique needs of each construction project.
-
-              By partnering with leading RMC plants in Surat, we offer the highest quality concrete mix with on-time delivery and customisable credit period/financing options.
+            At <span className='about'>BharatMSME</span>, we understand the struggles that Indian<span className='about'> MSMEs (Micro, Small and Medium enterprises) </span>face when it comes to availing subsidies given by State and Central governments. There is lack of awareness among these enterprises about various subsidies for which they are eligible and which can be availed easily.
             </p>
-          </div>
-        </div>
-      </section>
-      <section id="action/3.2" className="text-center py-3 sections">
-        <div className="container yarn">
-          <h2 className='sectionHeading'>Yarn</h2>
-          <div className="mx-auto" style={{ maxWidth: '800px' }}>
-            <p>Yarn refers to the continuous strands of fibres that are spun or twisted together to form a cohesive and continuous thread. Yarn is a crucial raw material in India's extensive textile industry, which has a deep-rooted history and plays a significant role in the country's economy.
-
-              In India, yarn is produced from various types of fibres, including natural fibres like cotton, wool, silk, and jute, as well as synthetic fibres such as polyester, nylon, and acrylic. The choice of fibre depends on the intended use of the yarn and the characteristics desired in the final textile product. It is used for a wide array of applications, including the manufacturing of fabrics, clothing, home textiles, and industrial products.
-
-              By partnering with leading Yarn manufacturers in Gujarat, we offer the highest quality yarn with on-time delivery and customisable credit period/financing options.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section id="action/3.3" className="text-center py-3 sections">
-        <div className="container loans">
-          <h2 className='sectionHeading'>SME Business Loans</h2>
-          <div className="mx-auto" style={{ maxWidth: '800px' }}>
             <p>
-            Unlock the potential of your business with our SME Business Loans where we have joined forces with India's leading financial institutions to provide unbeatable loan options tailored for small and medium scale companies. Whether you're dreaming big or seeking rapid growth, our confidence lies in empowering small and medium-scale enterprises like yours with impactful funding solutions.
-
-Say goodbye to endless paperwork and hello to fast, hassle-free funding.
-
-Trust in our expertise, leverage our network, and catapult your business towards greater heights today!
-</p>
+            In some cases, even if they are aware about such schemes, they lack the motivation to apply because of the lengthy procedures and various documentations.
+            </p>
+            <p>We are here to break this myth and help MSMEs avail benefit of each and every subsidy they are eligible for.
+            </p>
+            <br></br>
+            <p>
+            Another problem which MSMEs face is the lack of credit/ loans from banks/ financial institutions. Most of the applications are rejected due to lack of proper documentation, while for few MSMEs whose applications get sanctioned they get either very high interest rates or are offered loans after months of follow ups. The reason behind this problem is lack of credit history, incomplete documentation and no collateral to offer for mortgage against such loans.
+            </p>
+            <p>BharatMSME again comes to rescue such MSMEs by offering them loans with minimal documentation, lowest interest rates and completely digital process.  
+            </p>
           </div>
         </div>
       </section>
-      <section id="prices" className="text-center py-3 sections">
-        <h2 className='sectionHeading'>Prices</h2>
-        <div className="mx-auto" style={{ maxWidth: '1000px' }}>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Product</th>
-                <th scope="col">Rate</th>
-                <th scope="col">Location</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>RMC Grade A</td>
-                <td>5000/cm<sup>3</sup></td>
-                <td>Surat</td>
-                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>RMC Grade B</td>
-                <td>4500/cm<sup>3</sup></td>
-                <td>Surat</td>
-                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>RMC Grade C</td>
-                <td>4000/cm<sup>3</sup></td>
-                <td>Surat</td>
-                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Yarn Grade A</td>
-                <td>80,000/ton</td>
-                <td>Surat</td>
-                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Yarn Grade B</td>
-                <td>75,000/ton</td>
-                <td>Surat</td>
-                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
-              </tr>              
-              <tr>
-                <th scope="row">6</th>
-                <td>Yarn Grade C</td>
-                <td>70,000/ton</td>
-                <td>Surat</td>
-                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
-              </tr>
-              <tr>
-                <th scope="row">7</th>
-                <td>Working Capital Loan for SME</td>
-                <td>8% - 18% p.a.</td>
-                <td>Surat</td>
-                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
-              </tr>
-              <tr>
-                <th scope="row">8</th>
-                <td>Term Loan for SME</td>
-                <td>8% - 18% p.a.</td>
-                <td>Surat</td>
-                <td><Button className="buttons" type="link" onClick={handleContactButtonClick}>Enquire Now</Button></td>
-              </tr>
-            </tbody>
-
-          </table>
+      <section id="subsidy" className="text-center py-3 sections">
+        <div className="container subsidy">
+          <h2 className='sectionHeading'>PMFME Scheme </h2>
+          <div className="mx-auto" style={{ maxWidth: '1000px', textAlign: 'justify' }}>
+            <p>
+            The<span className='about'> PMFME (Pradhan Mantri Formalisation of Micro Food Processing Enterprises) Scheme </span>is a one-stop solution to formalise the Indian food sector. The Ministry of Food Processing implemented this scheme with the aim of supporting the ‘Vocal for Local’ campaign.
+            </p>
+            <p>
+              The PMFME scheme was launched under Atmanirbhar Bharat Abhiyaan in 2020 for 5 years from 2020-21 to 2024-25. It aims to increase the existing micro-enterprises operating in the food processing industries in the unorganised segment and formalise them with a special focus on supporting Farmer Producer Organizations (FPOs), producers cooperatives and Self-Help Groups (SHGs) engaged in the agri-food processing sector.
+            </p>
+            <p>
+              <p>Under this scheme, capital subsidy of <span className='about'>35%</span> of the eligible project cost is granted maximum upto :</p>
+            	•	<span className='about'>₹ 3 crore </span>for common infrastructure and capital expenditure of SHGs, FPOs and cooperatives.
+              <br></br><br></br> •	<span className='about'>₹ 10 lakhs </span>to individuals, proprietorships, partnerships, FPOs, NGOs, cooperatives, SHGs or private limited companies to upgrade existing units or set up new units.
+              <br></br><br></br> •  The subsidy is also applicable for <span className='about'>expansion of existing food businesses</span>.
+            </p>
+          </div>
+          <Button variant="primary" className="buttons" onClick={handleSubsidyButtonClick} style={{position: 'relative', fontSize: 'larger', fontWeight: 'bolder'}}>
+                            Apply Now
+                        </Button>
         </div>
+      </section>
+      <section id="loans" className="text-center py-3 sections">
+        <div className="container loan">
+          <h2 className='sectionHeading'>Unsecured Business Loans</h2>
+          <div className="mx-auto" style={{ maxWidth: '1000px', textAlign: 'justify' }}>
+            <p>An <span className='about'>Unsecured Business Loan </span>is the money you borrow from a lender for business purposes. The lender does not require you to pledge security, and you can repay the loan through Equated Monthly Instalments (EMIs). So how do lenders approve loans without any collateral in exchange? Well, they assess your repayment capabilities, i.e., your credit history and income when approving your loan. Eligible borrowers can get an Unsecured Business Loan for new businesses, business expansion, upgrading machinery, funding working capital, revamping the business space, etc. Micro, small and medium enterprises (MSMEs) can benefit from such loans as the chances of them having a property to pledge may be unlikely.
+            </p>
+            <p className='about'>Types of Unsecured Business Loans:
+            </p>
+            <span className='about'>• Term Business Loan: </span><span>You can get high-value Business Loans without collateral, guarantor or any other security to be repaid over a certain period of time. 
+            </span>
+            <br></br>
+            <br></br>
+            <span className='about'>• Overdraft (OD) Facility: </span><span>OD allows you to borrow sums of money from your lender if you hold a business account such as a Current Account. As a line of credit, you pay interest on the loan amount you have utilised for various business purposes.
+            </span>
+            <br></br>
+            <br></br>
+            <span className='about'>• Government-backed financing schemes: </span> <span>The MSME sector has emerged as one of the most crucial economic sectors. To encourage more individuals to pursue their business dreams, the Government of India has rolled out numerous credit schemes such as the Pradhan Mantri MUDRA Yojana (PMMY), Stand-up India, and Credit Guarantee Schemes (CGS), etc.
+            </span>
+            <br></br>
+            <br></br>
+            {/* <p className='about'>What are the benefits of Unsecured Business Loans?</p>
+            <span className='about'>• Faster processing times: </span><span>Without collateral, the only factors that the lender needs to assess are your credit score and business profitability. The documentation process, too, is at a minimum. Therefore, lenders process your loan within shorter timeframes. You can also enjoy faster disbursal once your Business Loan is approved.</span>
+            <br></br>
+            <br></br>
+            <span className='about'>• Affordable EMIs:  </span><span>With good repayment capabilities, you can negotiate preferential interest rates. That means, you can bring down your overall loan cost. Also, your monthly debt repayment does not bite a major chunk of your income.</span>
+            <br></br>
+            <br></br>
+            <span className='about'>• Flexible repayment terms: </span><span>Based on your creditworthiness, the lender can offer your repayment tenures that can last for five to seven years. You can opt for longer tenures for a lower EMI or contrariwise.</span>
+            <br></br>
+            <br></br> */}
+          </div>
+          <Button variant="primary" className="buttons" onClick={handleLoanButtonClick} style={{position: 'relative', fontSize: 'larger', fontWeight: 'bolder'}}>
+                            Apply Now
+                        </Button>
+        </div>
+        
       </section>
       <section id="contact" className="text-center py-3 sections" >
         <div className="container">
-          <h2 className="sectionHeading" style={{ color: 'white', textDecoration: 'underline' }}>Contact Us</h2>
-          <div className="mx-auto" style={{ maxWidth: '800px' }}>
-            <p className='about'>
-              Aashish Agarwal (Co-founder) : <a href="tel:+917600241395" className='phone-link'>+91-7600241395</a> </p>
-            <p className='about'>
-              Nishant Agarwal (Co-founder) : <a href="tel:+918905643296" className='phone-link'>+91-8905643296</a>
-            </p>
+          <h2 >Contact Us</h2>
+          <div className="mx-auto" style={{ maxWidth: '800px',display: 'flex', justifyContent: 'center' }}>
+            <span style={{marginRight: '35px'}}>
+             <PhoneIcon /> : <a href="tel:+916352763317" className='phone-link'>+91-6352763317</a> </span>
+              {/* <br></br> */}
+            <span>
+            <EmailIcon /> : <a href="mail:Bharatmsmeofficial@gmail.com" className='phone-link'>Bharatmsmeofficial@gmail.com</a>
+            </span>
           </div>
         </div>
       </section>
 
+      {/* Subsidy Form */}
+      <SubsidyForm
+        show={showSubsidyForm}
+        handleClose={handleSubsidyFormClose}
+        handleSubmit={handleSubsidySubmit}
+        handleChange={handleSubsidyChange}
+        formData={subsidyFormData}
+        showsuccess={showSuccessModal}
+        closeSuccess={handleCloseSuccessModal}
+      />
 
+      {/* Loan Form */}
+      <LoanForm
+        show={showLoanForm}
+        handleClose={handleLoanFormClose}
+        handleSubmit={handleLoanSubmit}
+        handleChange={handleLoanChange}
+        formData={loanFormData}
+        showsuccess={showSuccessModal}
+        closeSuccess={handleCloseSuccessModal}
+      />
 
-      {/* Login Form Modal */}
-      <Modal show={showLoginForm} onHide={handleLoginFormClose}>
-        <Modal.Header closeButton className='formheading'>
-          <Modal.Title>Get in Touch</Modal.Title>
-        </Modal.Header>
-        <Form onSubmit={handleSubmit}>
-          <Modal.Body>
-            {/* Add your login form fields here */}
-            <Form.Group controlId="formname">
-              <Form.Label>Your Name</Form.Label>
-              <Form.Control type="text" name="name" placeholder="Enter your name" onChange={handleChange} />
-            </Form.Group>
-            <Form.Group controlId="formOrganizationName">
-              <Form.Label>Organization Name</Form.Label>
-              <Form.Control type="text" name="organization" placeholder="Enter your organization name" onChange={handleChange} />
-            </Form.Group>
-            <Form.Group controlId="formPurpose">
-              <Form.Label>Purpose</Form.Label>
-              <Form.Control as="select" name="purpose" onChange={handleChange} >
-                <option value="">Select your purpose</option>
-                <option value="Want to become a Supplier">Want to become a Supplier</option>
-                <option value="Want to become a Buyer">Want to become a Buyer</option>
-                <option value="Want to become a Lending Partner">Want to become a Lending Partner</option>
-                <option value="Want to take a SME Business Loan">Want to take a SME Business Loan</option>
-                <option value="Others">Others</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="formRequirements">
-              <Form.Label>Requirements</Form.Label>
-              <Form.Control as="textarea" type="text" name="requirements" placeholder="Enter your requirements" onChange={handleChange} />
-            </Form.Group>
-            <Form.Group controlId="formMail">
-              <Form.Label>Mail Id</Form.Label>
-              <Form.Control type="email" name="email" placeholder="Enter your mail id" onChange={handleChange} />
-            </Form.Group>
-            <Form.Group controlId="formContact">
-              <Form.Label>Contact Number</Form.Label>
-              <Form.Control type="number" name="number" placeholder="Enter your contact number" onChange={handleChange} />
-            </Form.Group>
-            {/* Add more form fields as needed */}
-          </Modal.Body>
-          <Modal.Footer >
-            <Button variant="secondary" onClick={handleLoginFormClose}>
-              Close
-            </Button>
-            <Button variant="primary" type='submit' className="buttons">
-              Register
-            </Button>
-          </Modal.Footer>
-        </Form>
-      </Modal>
-
-      <Modal show={showSuccessModal} onHide={() => setShowSuccessModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Success!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Thank you for reaching out to us!</p>
-          {/* You can add more content or customize this as needed */}
-        </Modal.Body>
-      </Modal>
+      {/* Partnership Form */}
+      <PartnershipForm
+        show={showPartnershipForm}
+        handleClose={handlePartnershipFormClose}
+        handleSubmit={handlePartnershipSubmit}
+        handleChange={handlePartnershipChange}
+        formData={partnershipFormData}
+        showsuccess={showSuccessModal}
+        closeSuccess={handleCloseSuccessModal}
+      />
 
     </div>
   );

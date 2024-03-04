@@ -1,13 +1,13 @@
 /* src/App.css */
 .App {
   text-align: center;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .logo {
   margin-right: auto;
-  width: 80px;
-  height: 80px;
+  width: 300px;
+  height: 100px;
   max-width: 100%;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -60,20 +60,22 @@ table, th, td {
 
 .buttons{
   background: cadetblue !important;
+  border: 0 !important;
 }
 
-.yarn{
+.loan{
   position: relative;
-  background-image: url('output-onlinepngtools.png'); /* Replace 'your-image.jpg' with the path to your image */
+  background-image: url('loans_background.png'); 
+  /* Replace 'your-image.jpg' with the path to your image */
   background-size: cover;
   background-position: center;
   color: black; /* Adjust text color to be visible against the background */
   padding: 20px; /* Adjust padding as needed */
-  font-weight: bold;
-  font-size: large;
+  /* font-weight: bold; */
+  font-size: medium;
 }
 
-.yarn::before {
+.loan::before {
   content: '';
   position: absolute;
   top: 0;
@@ -83,18 +85,19 @@ table, th, td {
   background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity by changing the '0.5' value */
 }
 
-.rmc{
+.subsidy{
   position: relative;
-  background-image: url('rmc_background.png'); /* Replace 'your-image.jpg' with the path to your image */
+  background-image: url('food_background.png'); 
+  /* Replace 'your-image.jpg' with the path to your image */
   background-size: cover;
   background-position: center;
   color: black; /* Adjust text color to be visible against the background */
   padding: 20px; /* Adjust padding as needed */
-  font-weight: bold;
-  font-size: large;
+  /* font-weight: bold; */
+  font-size: medium;
 }
 
-.rmc::before {
+.subsidy::before {
   content: '';
   position: absolute;
   top: 0;
@@ -104,18 +107,19 @@ table, th, td {
   background-color: rgba(0, 0, 0, 0.1); /* Adjust the opacity by changing the '0.5' value */
 }
 
-.loans{
+.aboutUs{
   position: relative;
-  background-image: url('loans_background.png'); /* Replace 'your-image.jpg' with the path to your image */
+  background-image: url('logo_background.png'); 
+  /* Replace 'your-image.jpg' with the path to your image */
   background-size: cover;
   background-position: center;
   color: black; /* Adjust text color to be visible against the background */
   padding: 20px; /* Adjust padding as needed */
-  font-weight: bold;
-  font-size: large;
+  /* font-weight: bold; */
+  font-size: medium;
 }
 
-.loans::before {
+.aboutUs::before {
   content: '';
   position: absolute;
   top: 0;
@@ -125,30 +129,31 @@ table, th, td {
   background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity by changing the '0.5' value */
 }
 
-
 .navs{
   padding-top: 14px !important;
 }
 
-#basic-nav-dropdown{
+/* #basic-nav-dropdown{
   padding-top: 14px !important;
-}
+} */
 
 .about{
-  font-size: large;
+  ffont-size: medium;
   font-weight: bold;
 }
 
 .navbutton{
-  background-color: white !important;
+  background-color: cadetblue !important;
   color: black !important;
   font-weight: bold !important;
   border: none !important;
+  padding: 0px !important;
+  margin-left: 10px !important;
 }
 
 #contact{
-  background-color: cadetblue;
-  color: black !important;
+  /* background-color: cadetblue; */
+  color: cadetblue !important;
   padding: 10px;
 }
 
@@ -157,10 +162,32 @@ table, th, td {
 }
 
 .phone-link {
-  color: white; /* Initial color */
+  color: cadetblue;/* Initial color */
   transition: color 0.3s; /* Add a smooth transition effect */
 }
 
 .phone-link:hover {
   color:darkgray; /* Color on hover */
+}
+
+.navigation {
+  align-items: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+#home {
+  height: 500px;
+}
+
+.nav{
+  border-bottom: 1px solid cadetblue;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: cadetblue !important; /* Specify the desired background color */
+  color: white !important; /* Specify the desired text color */
 }
