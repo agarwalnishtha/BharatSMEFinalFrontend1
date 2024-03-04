@@ -218,7 +218,7 @@ function App() {
                   <NavDropdown.Item href="#action/3.3">SME Business Loans</NavDropdown.Item>
                 </NavDropdown> */}
                 <Nav.Link href="#subsidy" className='navs' style={{ width: '150px' }}>PMFME (Food Industry Subsidy)</Nav.Link>
-                <Nav.Link href="#loans" className='navs' style={{ width: '145px' }}>Unseured Business Loans</Nav.Link>
+                <Nav.Link href="#loans" className='navs' style={{ width: '145px' }}>Unsecured Business Loans</Nav.Link>
                 <Nav.Link href="#contact" className='navs'>Contact Us</Nav.Link>
                 {/* <Nav.Link href="#getintouch"><Button className="navbutton" type="link" onClick={handleContactButtonClick}>Get in Touch</Button></Nav.Link> */}
                 <Button className="navbutton"><NavDropdown title="Get in Touch">
