@@ -248,7 +248,7 @@ function App() {
           <Carousel.Item className='carousel'>
             <img
               className="image"
-              src="6bb36029-0fdc-4655-b712-9e05f1089f1e.jpg"
+              src="subsidy_carousel.png"
               alt="Second slide"
               style={{ width: '100%', height: '500px', objectFit: 'contain' }}
             />
@@ -260,7 +260,7 @@ function App() {
           <Carousel.Item className='carousel'>
             <img
               className="image"
-              src="Yarn_Carausal.jpg"
+              src="loan_carousel.png"
               alt="Third slide"
               style={{ width: '100%', height: '500px', objectFit: 'contain' }}
             />
