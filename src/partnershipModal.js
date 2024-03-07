@@ -20,17 +20,6 @@ const PartnershipForm = ({ show, handleClose, handleSubmit, handleChange, formDa
                             <Form.Label><strong>Organization Name</strong></Form.Label>
                             <Form.Control type="text" name="organization" placeholder="Enter your organization name" onChange={handleChange} />
                         </Form.Group>
-                        <Form.Group controlId="formDescription">
-                            <Form.Label><strong>Description <span style={{ color: 'red' }}>*</span></strong></Form.Label>
-                            <Form.Control as="textarea" type="text" name="description" placeholder="Describe your requirements here" onChange={handleChange} required />
-                        </Form.Group>
-                        <Form.Group controlId="formMail">
-                            <Form.Label><strong>Mail Id</strong></Form.Label>
-                            <Form.Control type="email" name="email" placeholder="Enter your mail id" onChange={handleChange} pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address" />
-                            <Form.Control.Feedback type="invalid">
-                                Please enter a valid email address.
-                            </Form.Control.Feedback>
-                        </Form.Group>
                         <Form.Group controlId="formContact">
                             <Form.Label><strong>Contact Number <span style={{ color: 'red' }}>*</span></strong></Form.Label>
                             <div className="input-group">
@@ -42,6 +31,28 @@ const PartnershipForm = ({ show, handleClose, handleSubmit, handleChange, formDa
                             <Form.Control.Feedback type="invalid">
                                 Please enter a valid 10-digit contact number.
                             </Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group controlId="formMail">
+                            <Form.Label><strong>Mail Id</strong></Form.Label>
+                            <Form.Control type="email" name="email" placeholder="Enter your mail id" onChange={handleChange} pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address" />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a valid email address.
+                            </Form.Control.Feedback>
+                        </Form.Group>
+                        
+                        <Form.Group controlId="formPartnershipType">
+                            <Form.Label><strong>Partnership Type <span style={{ color: 'red' }}>*</span></strong></Form.Label>
+                            <Form.Control as="select" name="partnershipType" onChange={handleChange} required>
+                                <option value="">Select your partnership type</option>
+                                <option value="Lending Partner">Lending Partner</option>
+                                <option value="Loan Professional">Loan Professional</option>
+                                <option value="Subsidy Professional">Subsidy Professional</option>
+                                <option value="Others">Others</option>
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group controlId="formDescription">
+                            <Form.Label><strong>Description <span style={{ color: 'red' }}>*</span></strong></Form.Label>
+                            <Form.Control as="textarea" type="text" name="description" placeholder="Describe your requirements here" onChange={handleChange} required />
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer >

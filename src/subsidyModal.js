@@ -14,7 +14,7 @@ const SubsidyForm = ({ show, handleClose, handleSubmit, handleChange, formData, 
                         {/* Add your login form fields here */}
                         <Form.Group controlId="formname">
                             <Form.Label><strong>Your Name <span style={{ color: 'red' }}>*</span></strong></Form.Label>
-                            <Form.Control type="text" name="name" placeholder="Enter your name" onChange={handleChange} required/>
+                            <Form.Control type="text" name="name" placeholder="Enter your name" onChange={handleChange} required />
                         </Form.Group>
                         <Form.Group controlId="formOrganizationName">
                             <Form.Label><strong>Organization Name</strong></Form.Label>
@@ -40,6 +40,26 @@ const SubsidyForm = ({ show, handleClose, handleSubmit, handleChange, formData, 
               <Form.Label><strong>City</strong></Form.Label>
               <CityDropdown onSelectCity={handleCityChange} /> 
             </Form.Group> */}
+                        <Form.Group controlId="formContact">
+                            <Form.Label><strong>Contact Number <span style={{ color: 'red' }}>*</span></strong></Form.Label>
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text">+91</span>
+                                </div>
+                                <Form.Control type="text" name="number" placeholder="Enter your contact number" onChange={handleChange} required pattern="[0-9]{10}" title="Please enter a 10-digit number" />
+                            </div>
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a valid 10-digit contact number.
+                            </Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group controlId="formMail">
+                            <Form.Label><strong>Mail Id</strong></Form.Label>
+                            <Form.Control type="email" name="email" placeholder="Enter your mail id" onChange={handleChange} pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address" />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a valid email address.
+                            </Form.Control.Feedback>
+                        </Form.Group>
+
                         <Form.Group controlId="formCity">
                             <Form.Label><strong>City <span style={{ color: 'red' }}>*</span></strong></Form.Label>
                             <Form.Control as="select" name="city" onChange={handleChange} required>
@@ -78,25 +98,6 @@ const SubsidyForm = ({ show, handleClose, handleSubmit, handleChange, formData, 
                                 <option value="Rajkot">Rajkot</option>
                                 <option value="Valsad">Valsad</option>
                             </Form.Control>
-                        </Form.Group>
-                        <Form.Group controlId="formMail">
-                            <Form.Label><strong>Mail Id</strong></Form.Label>
-                            <Form.Control type="email" name="email" placeholder="Enter your mail id" onChange={handleChange} pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address" />
-                            <Form.Control.Feedback type="invalid">
-                                Please enter a valid email address.
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                        <Form.Group controlId="formContact">
-                            <Form.Label><strong>Contact Number <span style={{ color: 'red' }}>*</span></strong></Form.Label>
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">+91</span>
-                                </div>
-                            <Form.Control type="text" name="number" placeholder="Enter your contact number" onChange={handleChange} required pattern="[0-9]{10}" title="Please enter a 10-digit number" />
-                            </div>
-                            <Form.Control.Feedback type="invalid">
-                                Please enter a valid 10-digit contact number.
-                            </Form.Control.Feedback>
                         </Form.Group>
                         {/* Add more form fields as needed */}
                     </Modal.Body>

@@ -14,6 +14,7 @@ import LoanForm from './loanModal';
 import PartnershipForm from './partnershipModal';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
+import BusinessIcon from '@mui/icons-material/Business';
 
 function App() {
   //subsidy form
@@ -156,6 +157,7 @@ function App() {
     email: '',
     number: '',
     description: '',
+    partnershipType: '',
   });
   const handlePartnershipChange = (e) => {
     setPartnershipFormData({ ...partnershipFormData, [e.target.name]: e.target.value });
@@ -175,6 +177,7 @@ function App() {
           email: '',
           number: '',
           description: '',
+          partnershipType: '',
         });
         // Close the modal
         handlePartnershipFormClose();
@@ -218,7 +221,7 @@ function App() {
                   <NavDropdown.Item href="#action/3.3">SME Business Loans</NavDropdown.Item>
                 </NavDropdown> */}
                 <Nav.Link href="#subsidy" className='navs' style={{ width: '150px' }}>PMFME (Food Industry Subsidy)</Nav.Link>
-                <Nav.Link href="#loans" className='navs' style={{ width: '145px' }}>Unsecured Business Loans</Nav.Link>
+                <Nav.Link href="#loans" className='navs' style={{ width: '220px' }}>Unsecured Business Loans<p style={{fontSize: 'smaller', marginBottom: '0px'}}>(Starting at 14%)</p></Nav.Link>
                 <Nav.Link href="#contact" className='navs'>Contact Us</Nav.Link>
                 {/* <Nav.Link href="#getintouch"><Button className="navbutton" type="link" onClick={handleContactButtonClick}>Get in Touch</Button></Nav.Link> */}
                 <Button className="navbutton"><NavDropdown title="Get in Touch">
@@ -332,10 +335,6 @@ function App() {
             </span>
             <br></br>
             <br></br>
-            <span className='about'>• Government-backed financing schemes: </span> <span>The MSME sector has emerged as one of the most crucial economic sectors. To encourage more individuals to pursue their business dreams, the Government of India has rolled out numerous credit schemes such as the Pradhan Mantri MUDRA Yojana (PMMY), Stand-up India, and Credit Guarantee Schemes (CGS), etc.
-            </span>
-            <br></br>
-            <br></br>
             {/* <p className='about'>What are the benefits of Unsecured Business Loans?</p>
             <span className='about'>• Faster processing times: </span><span>Without collateral, the only factors that the lender needs to assess are your credit score and business profitability. The documentation process, too, is at a minimum. Therefore, lenders process your loan within shorter timeframes. You can also enjoy faster disbursal once your Business Loan is approved.</span>
             <br></br>
@@ -356,13 +355,14 @@ function App() {
       <section id="contact" className="text-center py-3 sections" >
         <div className="container">
           <h2 >Contact Us</h2>
-          <div className="mx-auto" style={{ maxWidth: '800px',display: 'flex', justifyContent: 'center' }}>
+          <div className="mx-auto" style={{display: 'flex', justifyContent: 'center' }}>
             <span style={{marginRight: '35px'}}>
-             <PhoneIcon /> : <a href="tel:+916352763317" className='phone-link'>+91-6352763317</a> </span>
+             <PhoneIcon /> : <a href="tel:+918469878265" className='phone-link'>+91-8469878265</a> </span>
               {/* <br></br> */}
-            <span>
+            <span style={{marginRight: '35px'}}>
             <EmailIcon /> : <a href="mail:Bharatmsmeofficial@gmail.com" className='phone-link'>Bharatmsmeofficial@gmail.com</a>
             </span>
+            <span><BusinessIcon /> : <a href="mail:Bharatmsmeofficial@gmail.com" className='phone-link'>7, Prabhu Darshan Complex, Surat, Gujarat</a></span>
           </div>
         </div>
       </section>
