@@ -28,6 +28,16 @@ const LoanForm = ({ show, handleClose, handleSubmit, handleChange, formData, sho
                                 Please enter a valid GST number.
                             </Form.Control.Feedback>
                         </Form.Group>
+                        <Form.Group controlId="formBusinessPeriod">
+                            <Form.Label><strong>Business Operational From <span style={{ color: 'red' }}>*</span></strong></Form.Label>
+                            <Form.Control as="select" name="businessPeriod" onChange={handleChange} required>
+                                <option value="">Select your business period</option>
+                                <option value="1 year">1 year</option>
+                                <option value="2 years">2 years</option>
+                                <option value="3 years">3 years</option>
+                                <option value=">3 years">{'>'}3 years</option>
+                            </Form.Control>
+                        </Form.Group>
                         <Form.Group controlId="formContact">
                             <Form.Label><strong>Contact Number <span style={{ color: 'red' }}>*</span></strong></Form.Label>
                             <div className="input-group">

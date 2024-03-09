@@ -85,6 +85,7 @@ function App() {
     number: '',
     city: '',
     loanAmount: '',
+    businessPeriod: '',
   });
   const handleLoanChange = (e) => {
     const { name, value } = e.target;
@@ -125,6 +126,7 @@ function App() {
           number: '',
           city: '',
           loanAmount: '',
+          businessPeriod: '',
         });
         // Close the modal
         handleLoanFormClose();
@@ -221,7 +223,8 @@ function App() {
                   <NavDropdown.Item href="#action/3.3">SME Business Loans</NavDropdown.Item>
                 </NavDropdown> */}
                 <Nav.Link href="#subsidy" className='navs' style={{ width: '150px' }}>PMFME (Food Industry Subsidy)</Nav.Link>
-                <Nav.Link href="#loans" className='navs' style={{ width: '220px' }}>Unsecured Business Loans<p style={{fontSize: 'smaller', marginBottom: '0px'}}>(Starting at 14%)</p></Nav.Link>
+                <Nav.Link href="#loans" className='navs' style={{ width: '220px' }}>Unsecured Business Loans</Nav.Link>
+                {/* <p style={{fontSize: 'smaller', marginBottom: '0px'}}>(Starting at 14%)</p> */}
                 <Nav.Link href="#contact" className='navs'>Contact Us</Nav.Link>
                 {/* <Nav.Link href="#getintouch"><Button className="navbutton" type="link" onClick={handleContactButtonClick}>Get in Touch</Button></Nav.Link> */}
                 <Button className="navbutton"><NavDropdown title="Get in Touch">
@@ -305,12 +308,13 @@ function App() {
             The<span className='about'> PMFME (Pradhan Mantri Formalisation of Micro Food Processing Enterprises) Scheme </span>is a one-stop solution to formalise the Indian food sector. The Ministry of Food Processing implemented this scheme with the aim of supporting the ‘Vocal for Local’ campaign.
             </p>
             <p>
-              The PMFME scheme was launched under Atmanirbhar Bharat Abhiyaan in 2020 for 5 years from 2020-21 to 2024-25. It aims to increase the existing micro-enterprises operating in the food processing industries in the unorganised segment and formalise them with a special focus on supporting Farmer Producer Organizations (FPOs), producers cooperatives and Self-Help Groups (SHGs) engaged in the agri-food processing sector.
+              The PMFME scheme was launched under Atmanirbhar Bharat Abhiyaan in 2020 for 5 years from 2020-21 to 2024-25. It aims to increase the existing micro-enterprises operating in the food processing industries in the unorganised segment and formalise them with a special focus on supporting Farmer Producer Organizations (FPOs), producers Co-operatives and Self-Help Groups (SHGs) engaged in the agri-food processing sector.
             </p>
             <p>
               <p>Under this scheme, capital subsidy of <span className='about'>35%</span> of the eligible project cost is granted maximum upto :</p>
-            	•	<span className='about'>₹ 3 crore </span>for common infrastructure and capital expenditure of SHGs, FPOs and cooperatives.
-              <br></br><br></br> •	<span className='about'>₹ 10 lakhs </span>to individuals, proprietorships, partnerships, FPOs, NGOs, cooperatives, SHGs or private limited companies to upgrade existing units or set up new units.
+            	{/* •	<span className='about'>₹ 3 crores </span>for common infrastructure and capital expenditure of SHGs, FPOs and Co-operatives. */}
+              •	<span className='about'>₹ 3 crores </span>to SHGs, FPOs, Co-operatives, or Private limited companies to upgrade existing units or set up new units.
+              <br></br><br></br> •	<span className='about'>₹ 10 lakhs </span>to individuals, proprietorships, partnerships, to upgrade existing units or set up new units.
               <br></br><br></br> •  The subsidy is also applicable for <span className='about'>expansion of existing food businesses</span>.
             </p>
           </div>
