@@ -313,8 +313,8 @@ function App() {
             <p>
               <p>Under this scheme, capital subsidy of <span className='about'>35%</span> of the eligible project cost is granted maximum upto :</p>
             	{/* •	<span className='about'>₹ 3 crores </span>for common infrastructure and capital expenditure of SHGs, FPOs and Co-operatives. */}
-              •	<span className='about'>₹ 3 crores </span>to SHGs, FPOs, Co-operatives, or Private limited companies to upgrade existing units or set up new units.
-              <br></br><br></br> •	<span className='about'>₹ 10 lakhs </span>to individuals, proprietorships, partnerships, to upgrade existing units or set up new units.
+              •	<span className='about'>₹ 3 crores </span>to SHGs, FPOs, or Co-operatives to upgrade existing units or set up new units.
+              <br></br><br></br> •	<span className='about'>₹ 10 lakhs </span>to individuals, proprietorships, partnerships, or private limited companies to upgrade existing units or set up new units.
               <br></br><br></br> •  The subsidy is also applicable for <span className='about'>expansion of existing food businesses</span>.
             </p>
           </div>
