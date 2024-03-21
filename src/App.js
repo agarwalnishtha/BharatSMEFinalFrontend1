@@ -158,7 +158,6 @@ function App() {
     name: '',
     email: '',
     number: '',
-    city: '',
     loanAmount: '',
     employmentType: '',
   });
@@ -197,7 +196,6 @@ function App() {
           name: '',
           email: '',
           number: '',
-          city: '',
           loanAmount: '',
           employmentType: '',
         });
