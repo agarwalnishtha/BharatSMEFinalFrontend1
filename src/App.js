@@ -11,6 +11,7 @@ import axios from 'axios';
 import CityDropdown from './cityDropdown';
 import SubsidyForm from './subsidyModal';
 import LoanForm from './loanModal';
+import PersonalLoanForm from './personalLoanModal';
 import PartnershipForm from './partnershipModal';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
@@ -145,6 +146,78 @@ function App() {
     handleLoanFormShow();
   };
 
+  //personal loan form
+  const [showPLoanForm, setShowPLoanForm] = useState(false);
+  const handlePLoanFormShow = () => setShowPLoanForm(true);
+  const handlePLoanFormClose = () => {
+    console.log('Closing modal...');
+    setShowPLoanForm(false);
+    handleCloseSuccessModal(); // Close the success modal as well
+  };
+  const [ploanFormData, setPLoanFormData] = useState({
+    name: '',
+    email: '',
+    number: '',
+    city: '',
+    loanAmount: '',
+    employmentType: '',
+  });
+  const handlePLoanChange = (e) => {
+    const { name, value } = e.target;
+
+    // Check if the input field is 'loanAmount'
+    if (name === 'loanAmount') {
+        // Remove any non-digit characters from the input value, except for the Indian Rupee symbol
+        const cleanedValue = value.replace(/[^\d₹]/g, '');
+
+        // Remove leading zeros
+        const cleanedValueNoZeros = cleanedValue.replace(/^0+/, '');
+
+        // Format loan amount with commas
+        const formattedLoanAmount = cleanedValueNoZeros.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+        // Update loanFormData with the formatted value
+        setPLoanFormData({ ...ploanFormData, [name]: formattedLoanAmount });
+    } else {
+        // For other fields, update loanFormData as usual
+        setPLoanFormData({ ...ploanFormData, [name]: value });
+    }
+};
+
+  const handlePLoanSubmit = async (e) => {
+    console.log('Handling submit...');
+    e.preventDefault();
+    try {
+      const response = await axios.post('https://bharat-sme-5365a880f24b.herokuapp.com/ploan', ploanFormData);
+      console.log(response.data);
+      // Check if the registration was successful before closing the modal
+      if (response.data.success) {
+        // Reset the form data
+        setPLoanFormData({
+          name: '',
+          email: '',
+          number: '',
+          city: '',
+          loanAmount: '',
+          employmentType: '',
+        });
+        // Close the modal
+        handlePLoanFormClose();
+        // Show the success modal
+        handleShowSuccessModal();
+      } else {
+        console.error('Error registering user:', response.data.error);
+        // Handle the error scenario if needed
+      }
+    } catch (error) {
+      console.error('Error registering user:', error);
+    }
+  };
+  const handlePLoanButtonClick = () => {
+    // You can perform any additional logic before showing the login form here
+    handlePLoanFormShow();
+  };
+
   //partnership form
   const [showPartnershipForm, setShowPartnershipForm] = useState(false);
   const handlePartnershipFormShow = () => setShowPartnershipForm(true);
@@ -223,13 +296,18 @@ function App() {
                   <NavDropdown.Item href="#action/3.3">SME Business Loans</NavDropdown.Item>
                 </NavDropdown> */}
                 <Nav.Link href="#subsidy" className='navs' style={{ width: '150px' }}>PMFME (Food Industry Subsidy)</Nav.Link>
-                <Nav.Link href="#loans" className='navs' style={{ width: '220px' }}>Unsecured Business Loans</Nav.Link>
+                {/* <Nav.Link href="#loans" className='navs' style={{ width: '220px' }}>Unsecured Business Loans</Nav.Link> */}
+                <NavDropdown title="Loans" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="#loans">Unsecured Business Loans</NavDropdown.Item>
+                  <NavDropdown.Item href="#ploans">Personal Loans</NavDropdown.Item>
+                </NavDropdown>
                 {/* <p style={{fontSize: 'smaller', marginBottom: '0px'}}>(Starting at 14%)</p> */}
                 <Nav.Link href="#contact" className='navs'>Contact Us</Nav.Link>
                 {/* <Nav.Link href="#getintouch"><Button className="navbutton" type="link" onClick={handleContactButtonClick}>Get in Touch</Button></Nav.Link> */}
                 <Button className="navbutton"><NavDropdown title="Get in Touch">
                   <NavDropdown.Item type="link" onClick={handleSubsidyButtonClick}>For Subsidy</NavDropdown.Item>
-                  <NavDropdown.Item type="link" onClick={handleLoanButtonClick}>For Loans</NavDropdown.Item>
+                  <NavDropdown.Item type="link" onClick={handleLoanButtonClick}>For Unsecured Business Loans</NavDropdown.Item>
+                  <NavDropdown.Item type="link" onClick={handlePLoanButtonClick}>For Personal Loans</NavDropdown.Item>
                   <NavDropdown.Item type="link" onClick={handlePartnershipButtonClick}>For Partnership Enquiry</NavDropdown.Item>
                 </NavDropdown></Button>
               </Nav>
@@ -356,6 +434,33 @@ function App() {
         </div>
         
       </section>
+      <section id="ploans" className="text-center py-3 sections">
+        <div className="container loan">
+          <h2 className='sectionHeading'>Personal Loans</h2>
+          <div className="mx-auto" style={{ maxWidth: '1000px', textAlign: 'justify' }}>
+            <p><span className='about'>Personal Loan </span>is an unsecured credit provided by financial institutions based on criteria like employment history, repayment capacity, income level, profession and credit history. Personal Loan, which is also known as a consumer loan is a multi-purpose loan, which you can use to meet any of your immediate needs.
+            </p>
+            <p className='about'>What are the benefits of availing of a Personal Loan?
+            </p>
+            <span>Unlike other types of loans where you must provide several documents, Personal Loans require minimum documents and the approval process is quick. 
+            </span>
+            <br></br>
+            <br></br>
+            <span> With various financial institutions offering Personal Loan online services, the loan amount is disbursement within a few hours provided the lender is convinced of your repayment capacity.
+            </span>
+            <br></br>
+            <br></br>
+            <span> Another significant feature of Personal Loan is that the lenders offer you the flexibility to choose your loan tenure. So, you can select the loan term based on your repayment capacity.
+            </span>
+            <br></br>
+            <br></br>
+          </div>
+          <Button variant="primary" className="buttons" onClick={handlePLoanButtonClick} style={{position: 'relative', fontSize: 'larger', fontWeight: 'bolder'}}>
+                            Apply Now
+                        </Button>
+        </div>
+        
+      </section>
       <section id="contact" className="text-center py-3 sections" >
         <div className="container">
           <h2 >Contact Us</h2>
@@ -389,6 +494,17 @@ function App() {
         handleSubmit={handleLoanSubmit}
         handleChange={handleLoanChange}
         formData={loanFormData}
+        showsuccess={showSuccessModal}
+        closeSuccess={handleCloseSuccessModal}
+      />
+
+      {/* Personal Loan Form */}
+      <PersonalLoanForm
+        show={showPLoanForm}
+        handleClose={handlePLoanFormClose}
+        handleSubmit={handlePLoanSubmit}
+        handleChange={handlePLoanChange}
+        formData={ploanFormData}
         showsuccess={showSuccessModal}
         closeSuccess={handleCloseSuccessModal}
       />

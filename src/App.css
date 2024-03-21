@@ -65,7 +65,7 @@ table, th, td {
 
 .loan{
   position: relative;
-  background-image: url('loans_background.png'); 
+  /* background-image: url('loans_background.png');  */
   /* Replace 'your-image.jpg' with the path to your image */
   background-size: cover;
   background-position: center;
@@ -73,6 +73,7 @@ table, th, td {
   padding: 20px; /* Adjust padding as needed */
   /* font-weight: bold; */
   font-size: medium;
+  background-color: #f4f4f4;
 }
 
 .loan::before {
@@ -82,12 +83,13 @@ table, th, td {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity by changing the '0.5' value */
+  /* background-color: rgba(0, 0, 0, 0.2);  */
+  /* Adjust the opacity by changing the '0.5' value */
 }
 
 .subsidy{
   position: relative;
-  background-image: url('food_background.png'); 
+  /* background-image: url('food_background.png');  */
   /* Replace 'your-image.jpg' with the path to your image */
   background-size: cover;
   background-position: center;
@@ -95,6 +97,7 @@ table, th, td {
   padding: 20px; /* Adjust padding as needed */
   /* font-weight: bold; */
   font-size: medium;
+  background-color: #f4f4f4;
 }
 
 .subsidy::before {
@@ -104,12 +107,13 @@ table, th, td {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.1); /* Adjust the opacity by changing the '0.5' value */
+  /* background-color: rgba(0, 0, 0, 0.1);  */
+  /* Adjust the opacity by changing the '0.5' value */
 }
 
 .aboutUs{
   position: relative;
-  background-image: url('logo_background.png'); 
+  /* background-image: url('logo_background.png');  */
   /* Replace 'your-image.jpg' with the path to your image */
   background-size: cover;
   background-position: center;
@@ -117,6 +121,8 @@ table, th, td {
   padding: 20px; /* Adjust padding as needed */
   /* font-weight: bold; */
   font-size: medium;
+  /* border-bottom: 1px solid cadetblue; */
+  background-color: #f4f4f4;
 }
 
 .aboutUs::before {
@@ -126,7 +132,9 @@ table, th, td {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity by changing the '0.5' value */
+  /* background-color: rgba(0, 0, 0, 0.2);  */
+  
+  /* Adjust the opacity by changing the '0.5' value */
 }
 
 .navs{
@@ -191,3 +199,4 @@ table, th, td {
   background-color: cadetblue !important; /* Specify the desired background color */
   color: white !important; /* Specify the desired text color */
 }
+
