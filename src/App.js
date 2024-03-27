@@ -287,8 +287,10 @@ function App() {
       <div style={{ padding: '15px', fontWeight: 'bold', paddingTop: '0px' }}>
         <Navbar expand="lg" style={{ backgroundColor: 'white' }} className='nav'>
           <Container>
-            <Navbar.Brand className="logo" href="#home"><img src="logo_new.png" alt="Logo" className="logo" style={{ paddingBottom: '8px' }} /></Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <div className="d-flex align-items-center">
+            <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ display: 'inline-block' }} className='navbar-toggle' />
+            <Navbar.Brand className="logo" href="#home"><img src="logo_new.png" alt="Logo" className="logo" style={{ paddingBottom: '8px', display: 'inline-block' }} /></Navbar.Brand>
+            </div>
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ml-auto navigation">
                 <Nav.Link href="#about" className='navs'>About Us</Nav.Link>

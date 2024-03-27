@@ -209,3 +209,9 @@ table, th, td {
 .iconContent{
   font-size: small;
 }
+
+@media (min-width: 992px) {
+  .navbar-toggle {
+    display: none !important; /* Hide the hamburger icon */
+  }
+}
