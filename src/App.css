@@ -200,3 +200,12 @@ table, th, td {
   color: white !important; /* Specify the desired text color */
 }
 
+.iconHeading
+{
+  font-size: medium;
+  font-weight: bold;
+}
+
+.iconContent{
+  font-size: small;
+}

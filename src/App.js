@@ -16,6 +16,10 @@ import PartnershipForm from './partnershipModal';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import BusinessIcon from '@mui/icons-material/Business';
+import { FaHandsHelping } from "react-icons/fa";
+import SecurityIcon from '@mui/icons-material/Security';
+import VerifiedIcon from '@mui/icons-material/Verified';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 
 function App() {
   //subsidy form
@@ -93,22 +97,22 @@ function App() {
 
     // Check if the input field is 'loanAmount'
     if (name === 'loanAmount') {
-        // Remove any non-digit characters from the input value, except for the Indian Rupee symbol
-        const cleanedValue = value.replace(/[^\d₹]/g, '');
+      // Remove any non-digit characters from the input value, except for the Indian Rupee symbol
+      const cleanedValue = value.replace(/[^\d₹]/g, '');
 
-        // Remove leading zeros
-        const cleanedValueNoZeros = cleanedValue.replace(/^0+/, '');
+      // Remove leading zeros
+      const cleanedValueNoZeros = cleanedValue.replace(/^0+/, '');
 
-        // Format loan amount with commas
-        const formattedLoanAmount = cleanedValueNoZeros.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      // Format loan amount with commas
+      const formattedLoanAmount = cleanedValueNoZeros.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-        // Update loanFormData with the formatted value
-        setLoanFormData({ ...loanFormData, [name]: formattedLoanAmount });
+      // Update loanFormData with the formatted value
+      setLoanFormData({ ...loanFormData, [name]: formattedLoanAmount });
     } else {
-        // For other fields, update loanFormData as usual
-        setLoanFormData({ ...loanFormData, [name]: value });
+      // For other fields, update loanFormData as usual
+      setLoanFormData({ ...loanFormData, [name]: value });
     }
-};
+  };
 
   const handleLoanSubmit = async (e) => {
     console.log('Handling submit...');
@@ -166,22 +170,22 @@ function App() {
 
     // Check if the input field is 'loanAmount'
     if (name === 'loanAmount') {
-        // Remove any non-digit characters from the input value, except for the Indian Rupee symbol
-        const cleanedValue = value.replace(/[^\d₹]/g, '');
+      // Remove any non-digit characters from the input value, except for the Indian Rupee symbol
+      const cleanedValue = value.replace(/[^\d₹]/g, '');
 
-        // Remove leading zeros
-        const cleanedValueNoZeros = cleanedValue.replace(/^0+/, '');
+      // Remove leading zeros
+      const cleanedValueNoZeros = cleanedValue.replace(/^0+/, '');
 
-        // Format loan amount with commas
-        const formattedLoanAmount = cleanedValueNoZeros.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      // Format loan amount with commas
+      const formattedLoanAmount = cleanedValueNoZeros.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-        // Update loanFormData with the formatted value
-        setPLoanFormData({ ...ploanFormData, [name]: formattedLoanAmount });
+      // Update loanFormData with the formatted value
+      setPLoanFormData({ ...ploanFormData, [name]: formattedLoanAmount });
     } else {
-        // For other fields, update loanFormData as usual
-        setPLoanFormData({ ...ploanFormData, [name]: value });
+      // For other fields, update loanFormData as usual
+      setPLoanFormData({ ...ploanFormData, [name]: value });
     }
-};
+  };
 
   const handlePLoanSubmit = async (e) => {
     console.log('Handling submit...');
@@ -358,21 +362,47 @@ function App() {
       <section id="about" className="text-center py-3 sections" >
         <div className="container aboutUs">
           <h2 className="sectionHeading">What We Do?</h2>
-          <div className="mx-auto" style={{ maxWidth: '1000px' , textAlign: 'justify'}}>
+          <div className="mx-auto" style={{ maxWidth: '1000px', textAlign: 'justify' }}>
             <p>
-            At <span className='about'>BharatMSME</span>, we understand the struggles that Indian<span className='about'> MSMEs (Micro, Small and Medium enterprises) </span>face when it comes to availing subsidies given by State and Central governments. There is lack of awareness among these enterprises about various subsidies for which they are eligible and which can be availed easily.
+              At <span className='about'>BharatMSME</span>, we understand the struggles that Indian<span className='about'> MSMEs (Micro, Small and Medium enterprises) </span>face when it comes to availing subsidies given by State and Central governments. There is lack of awareness among these enterprises about various subsidies for which they are eligible and which can be availed easily.
             </p>
             <p>
-            In some cases, even if they are aware about such schemes, they lack the motivation to apply because of the lengthy procedures and various documentations.
+              In some cases, even if they are aware about such schemes, they lack the motivation to apply because of the lengthy procedures and various documentations.
             </p>
             <p>We are here to break this myth and help MSMEs avail benefit of each and every subsidy they are eligible for.
             </p>
             <br></br>
             <p>
-            Another problem which MSMEs face is the lack of credit/ loans from banks/ financial institutions. Most of the applications are rejected due to lack of proper documentation, while for few MSMEs whose applications get sanctioned they get either very high interest rates or are offered loans after months of follow ups. The reason behind this problem is lack of credit history, incomplete documentation and no collateral to offer for mortgage against such loans.
+              Another problem which MSMEs face is the lack of credit/ loans from banks/ financial institutions. Most of the applications are rejected due to lack of proper documentation, while for few MSMEs whose applications get sanctioned they get either very high interest rates or are offered loans after months of follow ups. The reason behind this problem is lack of credit history, incomplete documentation and no collateral to offer for mortgage against such loans.
             </p>
-            <p>BharatMSME again comes to rescue such MSMEs by offering them loans with minimal documentation, lowest interest rates and completely digital process.  
+            <p>BharatMSME again comes to rescue such MSMEs by offering them loans with minimal documentation, lowest interest rates and completely digital process.
             </p>
+          </div>
+        </div>
+      </section>
+      <section className="text-center py-3 sections" style={{margin: '30px'}} >
+        <div class="container text-center">
+          <div class="row">
+            <div class="col">
+              <SecurityIcon style={{ fontSize: '50px' }} />
+              <div className='iconHeading'>100% Secured Data</div>
+              <div className='iconContent'>Your data is end-to-end encrypted on our platform</div>
+            </div>
+            <div class="col">
+              <VerifiedIcon style={{ fontSize: '50px' }} />
+              <div className='iconHeading'>1K+ Customers</div>
+              <div className='iconContent'>Trusted by over 1K+ customers across Gujarat</div>
+            </div>
+            <div class="col">
+              <AccountBalanceIcon style={{ fontSize: '50px' }} />
+              <div className='iconHeading'>Tieups with Banks</div>
+              <div className='iconContent'>We have tieups with all the leading Banks and NBFCs</div>
+            </div>
+            <div class="col">
+              <FaHandsHelping style={{ fontSize: '50px' }} />
+              <div className='iconHeading'>End to End Support</div>
+              <div className='iconContent'>We provide support till subsidy/loan is received</div>
+            </div>
           </div>
         </div>
       </section>
@@ -381,22 +411,22 @@ function App() {
           <h2 className='sectionHeading'>PMFME Scheme </h2>
           <div className="mx-auto" style={{ maxWidth: '1000px', textAlign: 'justify' }}>
             <p>
-            The<span className='about'> PMFME (Pradhan Mantri Formalisation of Micro Food Processing Enterprises) Scheme </span>is a one-stop solution to formalise the Indian food sector. The Ministry of Food Processing implemented this scheme with the aim of supporting the ‘Vocal for Local’ campaign.
+              The<span className='about'> PMFME (Pradhan Mantri Formalisation of Micro Food Processing Enterprises) Scheme </span>is a one-stop solution to formalise the Indian food sector. The Ministry of Food Processing implemented this scheme with the aim of supporting the ‘Vocal for Local’ campaign.
             </p>
             <p>
               The PMFME scheme was launched under Atmanirbhar Bharat Abhiyaan in 2020 for 5 years from 2020-21 to 2024-25. It aims to increase the existing micro-enterprises operating in the food processing industries in the unorganised segment and formalise them with a special focus on supporting Farmer Producer Organizations (FPOs), producers Co-operatives and Self-Help Groups (SHGs) engaged in the agri-food processing sector.
             </p>
             <p>
               <p>Under this scheme, capital subsidy of <span className='about'>35%</span> of the eligible project cost is granted maximum upto :</p>
-            	{/* •	<span className='about'>₹ 3 crores </span>for common infrastructure and capital expenditure of SHGs, FPOs and Co-operatives. */}
+              {/* •	<span className='about'>₹ 3 crores </span>for common infrastructure and capital expenditure of SHGs, FPOs and Co-operatives. */}
               •	<span className='about'>₹ 3 crores </span>to SHGs, FPOs, or Co-operatives to upgrade existing units or set up new units.
               <br></br><br></br> •	<span className='about'>₹ 10 lakhs </span>to individuals, proprietorships, partnerships, or private limited companies to upgrade existing units or set up new units.
               <br></br><br></br> •  The subsidy is also applicable for <span className='about'>expansion of existing food businesses</span>.
             </p>
           </div>
-          <Button variant="primary" className="buttons" onClick={handleSubsidyButtonClick} style={{position: 'relative', fontSize: 'larger', fontWeight: 'bolder'}}>
-                            Apply Now
-                        </Button>
+          <Button variant="primary" className="buttons" onClick={handleSubsidyButtonClick} style={{ position: 'relative', fontSize: 'larger', fontWeight: 'bolder' }}>
+            Apply Now
+          </Button>
         </div>
       </section>
       <section id="loans" className="text-center py-3 sections">
@@ -407,7 +437,7 @@ function App() {
             </p>
             <p className='about'>Types of Unsecured Business Loans:
             </p>
-            <span className='about'>• Term Business Loan: </span><span>You can get high-value Business Loans without collateral, guarantor or any other security to be repaid over a certain period of time. 
+            <span className='about'>• Term Business Loan: </span><span>You can get high-value Business Loans without collateral, guarantor or any other security to be repaid over a certain period of time.
             </span>
             <br></br>
             <br></br>
@@ -426,11 +456,11 @@ function App() {
             <br></br>
             <br></br> */}
           </div>
-          <Button variant="primary" className="buttons" onClick={handleLoanButtonClick} style={{position: 'relative', fontSize: 'larger', fontWeight: 'bolder'}}>
-                            Apply Now
-                        </Button>
+          <Button variant="primary" className="buttons" onClick={handleLoanButtonClick} style={{ position: 'relative', fontSize: 'larger', fontWeight: 'bolder' }}>
+            Apply Now
+          </Button>
         </div>
-        
+
       </section>
       <section id="ploans" className="text-center py-3 sections">
         <div className="container loan">
@@ -440,7 +470,7 @@ function App() {
             </p>
             <p className='about'>What are the benefits of availing of a Personal Loan?
             </p>
-            <span>Unlike other types of loans where you must provide several documents, Personal Loans require minimum documents and the approval process is quick. 
+            <span>Unlike other types of loans where you must provide several documents, Personal Loans require minimum documents and the approval process is quick.
             </span>
             <br></br>
             <br></br>
@@ -453,21 +483,21 @@ function App() {
             <br></br>
             <br></br>
           </div>
-          <Button variant="primary" className="buttons" onClick={handlePLoanButtonClick} style={{position: 'relative', fontSize: 'larger', fontWeight: 'bolder'}}>
-                            Apply Now
-                        </Button>
+          <Button variant="primary" className="buttons" onClick={handlePLoanButtonClick} style={{ position: 'relative', fontSize: 'larger', fontWeight: 'bolder' }}>
+            Apply Now
+          </Button>
         </div>
-        
+
       </section>
       <section id="contact" className="text-center py-3 sections" >
         <div className="container">
           <h2 >Contact Us</h2>
-          <div className="mx-auto" style={{display: 'flex', justifyContent: 'center' }}>
-            <span style={{marginRight: '35px'}}>
-             <PhoneIcon /> : <a href="tel:+918469878265" className='phone-link'>+91-8469878265</a> </span>
-              {/* <br></br> */}
-            <span style={{marginRight: '35px'}}>
-            <EmailIcon /> : <a href="mail:Bharatmsmeofficial@gmail.com" className='phone-link'>Bharatmsmeofficial@gmail.com</a>
+          <div className="mx-auto" style={{ display: 'flex', justifyContent: 'center' }}>
+            <span style={{ marginRight: '35px' }}>
+              <PhoneIcon /> : <a href="tel:+918469878265" className='phone-link'>+91-8469878265</a> </span>
+            {/* <br></br> */}
+            <span style={{ marginRight: '35px' }}>
+              <EmailIcon /> : <a href="mail:Bharatmsmeofficial@gmail.com" className='phone-link'>Bharatmsmeofficial@gmail.com</a>
             </span>
             <span><BusinessIcon /> : <a href="mail:Bharatmsmeofficial@gmail.com" className='phone-link'>7, Prabhu Darshan Complex, Surat, Gujarat</a></span>
           </div>
