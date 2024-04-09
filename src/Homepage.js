@@ -307,7 +307,6 @@ const Homepage = () => {
                   <NavDropdown.Item href="#ploans">Personal Loans</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Products" id="basic-nav-dropdown">
-                  <NavDropdown.Item href='/simple'>SimpleComponent</NavDropdown.Item>
                   <NavDropdown.Item href='/khakhra-machines'>Khakhra Machine</NavDropdown.Item>
                 </NavDropdown>
                 {/* <p style={{fontSize: 'smaller', marginBottom: '0px'}}>(Starting at 14%)</p> */}
