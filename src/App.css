@@ -215,3 +215,11 @@ table, th, td {
     display: none !important; /* Hide the hamburger icon */
   }
 }
+
+.product-container {
+  display: inline-block;
+  width: calc(50% - 20px); /* Adjust width as needed */
+  margin: 10px;
+  text-align: center;
+}
+

@@ -1,0 +1,77 @@
+const products = [
+    {
+      name: 'Automatic Khakhra Making Machine',
+      price: '₹8,80,000',
+      coverImage: 'khakhra_cover.png',
+      contact: '999999999999',
+      detailImage: 'khakhra_detail.png',
+      id: 0,
+    },
+    {
+        name: 'Floor Kneading Machine',
+        price: '₹42,000',
+        coverImage: 'floor_kneading_cover.png',
+        contact: '999999999999',
+        detailImage: 'floor_kneading_detail.png',
+        id : 1,
+    },
+    {
+        name: 'Automatic Khakhra & Bhakhri Making Machine (550pcs/hr)',
+        price: '₹16,00,000',
+        coverImage: 'khakhra_bhakhri_cover.png',
+        contact: '999999999999',
+        detailImage: 'khakhra_bhakhri_detail.png',
+        id : 2,
+    },
+    {
+        name: 'Single Chamber Vacuum Machine',
+        price: '₹1,00,000',
+        coverImage: 'vacuum_cover.png',
+        contact: '999999999999',
+        detailImage: 'vacuum_detail.png',
+        id : 3,
+    },
+    {
+        name: 'Automatic Thepla Making Machine',
+        price: '₹7,00,000',
+        coverImage: 'thepla_cover.png',
+        contact: '999999999999',
+        detailImage: 'thepla_detail.png',
+        id : 4,
+    },
+    {
+        name: 'Doughball Making Machine',
+        price: '₹1,00,000',
+        coverImage: 'doughball_cover.png',
+        contact: '999999999999',
+        detailImage: 'doughball_detail.png',
+        id : 5,
+    },
+    {
+        name: 'Roti Making Machine (900 Roti/Hr)',
+        price: '₹3,50,000',
+        coverImage: 'roti_cover.png',
+        contact: '999999999999',
+        detailImage: 'roti_detail.png',
+        id : 6,
+    },
+    {
+        name: 'Roti Making Machine (1800 Roti/Hr)',
+        price: '₹6,00,000',
+        coverImage: 'roti1800_cover.png',
+        contact: '999999999999',
+        detailImage: 'roti1800_detail.png',
+        id : 7,
+    },
+    {
+        name: 'Automatic Khakhra & Bhakhri Making Machine (1050pcs/hr)',
+        price: '₹*N/A*',
+        coverImage: 'khakhra_bhakhri1050_cover.png',
+        contact: '999999999999',
+        detailImage: 'khakhra_bhakhri1050_detail.png',
+        id : 8,
+    },
+    // Add more products as needed
+  ];
+
+  export default products;
