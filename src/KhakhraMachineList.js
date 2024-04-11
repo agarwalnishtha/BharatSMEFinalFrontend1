@@ -13,7 +13,7 @@ const KhakhraMachineList = () => {
             <br></br>
             <div style={{ cursor: 'pointer' }}>
                 {products.map((product, index) => (
-                    <div key={index} className="product-container" style={{ marginBottom: '50px' }}>
+                    <div key={index} className="product-container">
                         <Link to={`/${index}`}>
                             <img src={product.coverImage} alt={product.name} style={{ maxWidth: '600px', height: '300px' }} />
                         </Link>

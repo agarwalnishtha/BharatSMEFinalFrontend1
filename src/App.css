@@ -218,7 +218,7 @@ table, th, td {
 
 .product-container {
   display: inline-block;
-  width: calc(50% - 20px); /* Adjust width as needed */
+  /* width: calc(50% - 20px);  */
   margin: 10px;
   text-align: center;
 }
