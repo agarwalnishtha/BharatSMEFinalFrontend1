@@ -307,7 +307,10 @@ const Homepage = () => {
                   <NavDropdown.Item href="#ploans">Personal Loans</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Products" id="basic-nav-dropdown">
-                  <NavDropdown.Item href='/khakhra-machines'>Khakhra Machine</NavDropdown.Item>
+                  <NavDropdown.Item href='/khakhra-machines'>Khakhra Machines</NavDropdown.Item>
+                  <NavDropdown.Item href='/cooling-machines'>Cooling Machines</NavDropdown.Item>
+                  <NavDropdown.Item href='/oil-machines'>Oil Machines</NavDropdown.Item>
+                  <NavDropdown.Item href='/namkeen-sweets-machines'>Namkeen and Sweets Machines</NavDropdown.Item>
                 </NavDropdown>
                 {/* <p style={{fontSize: 'smaller', marginBottom: '0px'}}>(Starting at 14%)</p> */}
                 <Nav.Link href="#contact" className='navs'>Contact Us</Nav.Link>
